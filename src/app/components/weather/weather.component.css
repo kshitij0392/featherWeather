@@ -1,0 +1,54 @@
+.weatherCard{
+    border: 2px ;
+    border-radius: 5px;
+    margin-top: 50px;
+    opacity: 50%;
+}
+
+/* .inputClass{
+    margin-top: 50px;
+    position: relative;
+    align-self: center;
+} */
+
+#citySpan{
+    font-size: 45px;
+   align-content: center;
+}
+
+.quickCities{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.egButtons{
+    border-radius: 0px;
+    border-left: 0.7px solid black;
+}
+
+.searchBar{
+    display: inline-block;
+    border-radius: 0px;
+   position: relative;
+}
+
+.headerDiv{
+    margin-top:30px;
+    display:-webkit-inline-box;
+}
+
+.searchInput{
+    margin-left:20px;
+    width:300px;
+    border-radius:0px;
+}
+
+.mainWeatherHeader{
+    background-color: #820b0b;
+    color: white;
+}
+
+.displayData{
+    margin-top: 40px;
+}
+

@@ -1,0 +1,38 @@
+<div class="headerDiv">
+  <span class="quickCities" *ngFor="let exampleCity of exampleCities">
+    <button class="btn btn-default egButtons" (click)=quickCitySearch(exampleCity)>{{exampleCity}}</button>
+  </span>
+
+  <input type="text" class="form-group form-control searchInput" placeholder="Search Location" [(ngModel)]=cityName name="City">
+  <button class="btn btn-success searchInput" style="width:100px!important" (click)=searchCity()>Search !</button>
+</div>
+
+<div class="displayData" *ngIf="dataIn">
+
+  <h2 style="color:white; text-align:center;"> {{weatherData.name}},
+    <small>{{countryName}}</small>
+  </h2>
+  <div class="searchResults">
+    <div class="card text-center">
+      <div class="card-header mainWeatherHeader">
+        {{today | date: 'fullDate'}}
+      </div>
+      <div class="card-block">
+        <div class="current-temp">
+          <img [src]="iconUrl">
+          <h4 class="card-title">{{weatherData.mainData.temp}}° F</h4>
+        </div>
+        <h2 class="card-text">{{skyStatus}}</h2>
+        <h4 class="card-text">
+          <span class="description" style="font-weight:normal"> {{description}} ~ </span>
+          <small> High &uarr; {{weatherData.mainData.temp_max}}° F ~ Low &darr; {{weatherData.mainData.temp_min}}° F </small>
+        </h4>
+        <hr>
+        <span class="badge badge-success"> Humidity ~ {{weatherData.mainData.humidity}}% </span>
+        <span class="badge badge-primary"> Pressure ~ {{weatherData.mainData.pressure}} </span>
+      </div>
+      <div class="card-footer text-muted" style="margin-top:20px; background-color: #820b0b;">
+       
+      </div>
+    </div>
+  </div>
