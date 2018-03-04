@@ -42,7 +42,6 @@ export class WeatherComponent implements OnInit {
         this.isQuickCity = false;
     }
     this.weatherService.getWeather(this.cityName, this.units).subscribe((res: Response) => {
-      console.log(res.json())
       this.weatherData['mainData'] = res.json()['main'];
       this.weatherData['fullForecast'] = res.json()['sys'];
       this.weatherData['weather'] = res.json()['weather'];
@@ -55,7 +54,6 @@ export class WeatherComponent implements OnInit {
       this.description = res.json().weather[0]['description'];
       this.dataIn = true;
       this.countryCode = res.json()['sys']['id'];
-      console.log(this.weatherData);
       this.isQuickCity ? !this.isQuickCity : '';
       this.getForecast();
       return this.weatherData;
@@ -67,15 +65,12 @@ export class WeatherComponent implements OnInit {
   getForecast() {
     var listArray = [];
     this.weatherService.getForecast(this.cityName, this.countryCode).subscribe((res: Response) => {
-      console.log(res.json());
-     
       this.forecastData['city'] = res.json()['city'];
       this.forecastData['list'] = [];
      this.cityPopulation = res.json().city['population'];
       var list = res.json().list;
       for (var i = 0; i < list.length; i++) {
         if (i == 9 || i == 17 || i == 25) {
-          // this.forecastData
           this.forecastData['list'].push(list[i]);
 
         }
@@ -86,10 +81,7 @@ export class WeatherComponent implements OnInit {
         list2.push(element);
       });
       this.forecast = list2;
-     console.log(this.forecast)
-      console.log(this.forecastData)
       return this.forecastData;
-     
     })
   
   }
