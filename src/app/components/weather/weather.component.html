@@ -2,7 +2,7 @@
   <span class="quickCities" *ngFor="let exampleCity of exampleCities">
     <button class="btn btn-default egButtons" (click)=quickCitySearch(exampleCity)>{{exampleCity}}</button>
   </span>
-  <input type="text" class="form-group form-control searchInput" placeholder="Search Location"  [(ngModel)]=cityName name="City" (change)=getCities(cityName)>
+  <input type="text" class="form-group form-control searchInput" placeholder="Search Location"  [(ngModel)]=cityName name="City">
   <button class="btn btn-success searchInput" style="width:100px!important" (click)=searchCity()>Search !</button>
 </div>
 
