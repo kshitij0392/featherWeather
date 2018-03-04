@@ -5,8 +5,6 @@ import "rxjs/add/operator/map";
 import { Observable } from 'rxjs/Observable';
 import { DatePipe } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
@@ -47,7 +45,7 @@ export class WeatherComponent implements OnInit {
       this.weatherData['weather'] = res.json()['weather'];
       this.weatherData['name'] = res.json()['name'];
       this.weatherData['wind']= res.json()['wind'];
-      this.weatherData['coord'] = res.json()['coord']
+      this.weatherData['coord'] = res.json()['coord'];
       this.countryName = res.json()['sys']['country'];
       this.iconUrl = "http://openweathermap.org/img/w/" + res.json().weather[0]['icon'] + '.png';
       this.skyStatus = res.json().weather[0]['main'];
@@ -72,7 +70,6 @@ export class WeatherComponent implements OnInit {
       for (var i = 0; i < list.length; i++) {
         if (i == 9 || i == 17 || i == 25) {
           this.forecastData['list'].push(list[i]);
-
         }
       }
       var list2 = [];
@@ -85,6 +82,10 @@ export class WeatherComponent implements OnInit {
     })
   
   }
+
+
+
+
 
   quickCitySearch(city) {
     this.isQuickCity = true;
