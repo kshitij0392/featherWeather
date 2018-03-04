@@ -2,7 +2,6 @@
   <span class="quickCities" *ngFor="let exampleCity of exampleCities">
     <button class="btn btn-default egButtons" (click)=quickCitySearch(exampleCity)>{{exampleCity}}</button>
   </span>
-
   <input type="text" class="form-group form-control searchInput" placeholder="Search Location" [(ngModel)]=cityName name="City">
   <button class="btn btn-success searchInput" style="width:100px!important" (click)=searchCity()>Search !</button>
 </div>
@@ -29,10 +28,35 @@
         </h4>
         <hr>
         <span class="badge badge-success"> Humidity ~ {{weatherData.mainData.humidity}}% </span>
-        <span class="badge badge-primary"> Pressure ~ {{weatherData.mainData.pressure}} </span>
+        <span class="badge badge-primary"> Pressure ~ {{weatherData.mainData.pressure}} hPa </span>
       </div>
-      <div class="card-footer text-muted" style="margin-top:20px; background-color: #820b0b;">
-       
+      <div class="card-footer text-muted" style="margin-top:20px; vertical-align:middle">
+        <p style="color:black">City Population: {{cityPopulation}} ~ Latitude : {{weatherData.coord.lat}} ~ Longitude : {{weatherData.coord.lon}}</p>
+        <span> </span>
+
+      </div>
+    </div>
+
+    <div class="row three-day-temperature" style="margin-top:50px;">
+      <div class="col-sm-4" *ngFor="let forecast of forecast">
+        <div class="card text-center">
+          <div class="card-header">
+            {{today | date: 'fullDate'}}
+          </div>
+          <div class="card-block">
+            <img [src]="forecast.forecastIcon">
+            <h4 class="card-title">{{forecast.main.temp}}° F</h4>
+            <h5 class="card-text">{{forecast.weather[0].main}}</h5>
+            <span class="" style="font-weight:normal"> {{forecast.weather[0].description}} ~ </span>
+            <small> High &uarr; {{forecast.main.temp_max}}° F ~ Low &darr; {{forecast.main.temp_min}}° F </small>
+
+
+          </div>
+          <div class="card-footer text-muted" style="margin-top:10px;">
+            <span class="badge badge-success"> Humidity ~ {{forecast.main.humidity}}% </span>
+            <span class="badge badge-primary"> Pressure ~ {{forecast.main.pressure}} hPa </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

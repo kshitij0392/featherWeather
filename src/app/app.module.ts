@@ -7,6 +7,7 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { WeatherService } from './services/weather.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -16,6 +17,7 @@ import { WeatherService } from './services/weather.service';
     NavbarComponent,
     AboutComponent,
     WeatherComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,6 +29,8 @@ export class WeatherComponent implements OnInit {
   description: String;
   countryCode: Number;
   forecast: Array<object>;
+  forecastData: object = {};
+  cityPopulation:Number;
   constructor(private weatherService: WeatherService) { }
 
   searchCity(city) {
@@ -45,6 +47,8 @@ export class WeatherComponent implements OnInit {
       this.weatherData['fullForecast'] = res.json()['sys'];
       this.weatherData['weather'] = res.json()['weather'];
       this.weatherData['name'] = res.json()['name'];
+      this.weatherData['wind']= res.json()['wind'];
+      this.weatherData['coord'] = res.json()['coord']
       this.countryName = res.json()['sys']['country'];
       this.iconUrl = "http://openweathermap.org/img/w/" + res.json().weather[0]['icon'] + '.png';
       this.skyStatus = res.json().weather[0]['main'];
@@ -61,11 +65,33 @@ export class WeatherComponent implements OnInit {
 
 
   getForecast() {
+    var listArray = [];
     this.weatherService.getForecast(this.cityName, this.countryCode).subscribe((res: Response) => {
-      console.log(res.json(), 'forecast');
-      this.forecast = res.json();
+      console.log(res.json());
+     
+      this.forecastData['city'] = res.json()['city'];
+      this.forecastData['list'] = [];
+     this.cityPopulation = res.json().city['population'];
+      var list = res.json().list;
+      for (var i = 0; i < list.length; i++) {
+        if (i == 9 || i == 17 || i == 25) {
+          // this.forecastData
+          this.forecastData['list'].push(list[i]);
+
+        }
+      }
+      var list2 = [];
+      this.forecastData['list'].forEach(element => {
+        element['forecastIcon'] = "http://openweathermap.org/img/w/" + element.weather[0]['icon'] + '.png'; 
+        list2.push(element);
+      });
+      this.forecast = list2;
+     console.log(this.forecast)
+      console.log(this.forecastData)
+      return this.forecastData;
+     
     })
-    return this.forecast
+  
   }
 
   quickCitySearch(city) {
