@@ -3,7 +3,7 @@
     <button class="btn btn-default egButtons" (click)=quickCitySearch(exampleCity)>{{exampleCity}}</button>
   </span>
   <input type="text" class="form-group form-control searchInput" placeholder="Search Location"  [(ngModel)]=cityName name="City">
-  <button class="btn btn-success searchInput" style="width:100px!important" (click)=searchCity()>Search !</button>
+  <button class="btn btn-success searchInput" style="width:100px!important" (click)=searchCity(cityName)>Search !</button>
 </div>
 
 <div class="displayData" *ngIf="dataIn">
