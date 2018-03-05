@@ -7,9 +7,9 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class WeatherService {
-  apiUrl: String = "http://api.openweathermap.org/data/2.5/weather?q=";
+  apiUrl: String = "https://api.openweathermap.org/data/2.5/weather?q=";
   apiKey: String = "a8c5cfee278a8f18b9010b3e58b0dd3b";
-  forecastUrl: String = "http://api.openweathermap.org/data/2.5/forecast?q=";
+  forecastUrl: String = "https://api.openweathermap.org/data/2.5/forecast?q=";
    googleApiUrl:String = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input="
   googleApiKey:String = "AIzaSyB89geSS5ysot5emmtJ4BQmnyd9uLre-xU";
   constructor(private http: Http) { }
